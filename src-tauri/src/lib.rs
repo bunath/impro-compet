@@ -2,8 +2,13 @@ use tauri_plugin_log::{Target, TargetKind};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    #[allow(unused_mut)]
-    let mut builder = tauri::Builder::default()
+    // En release Windows il n'y a pas de console : on garde la trace d'un crash dans %TEMP%.
+    std::panic::set_hook(Box::new(|info| {
+        let path = std::env::temp_dir().join("impro-regie-crash.log");
+        let _ = std::fs::write(path, format!("{info}"));
+    }));
+
+    tauri::Builder::default()
         // Logs Rust -> terminal (pnpm tauri dev) + console DevTools.
         .plugin(
             tauri_plugin_log::Builder::new()
@@ -17,22 +22,23 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_http::init())
-        .plugin(tauri_plugin_process::init());
+        .plugin(tauri_plugin_process::init())
+        .setup(|app| {
+            // Updater : enregistré ici pour qu'une config absente (build sans clé de signature)
+            // désactive juste les mises à jour au lieu de faire planter l'app au démarrage.
+            #[cfg(all(desktop, not(debug_assertions)))]
+            if let Err(e) = app
+                .handle()
+                .plugin(tauri_plugin_updater::Builder::new().build())
+            {
+                log::warn!("mises à jour automatiques désactivées : {e}");
+            }
 
-    // Le plugin updater lit sa config (clé publique) : actif uniquement en build release,
-    // où `tauri.release.conf.json` la fournit.
-    #[cfg(all(desktop, not(debug_assertions)))]
-    {
-        builder = builder.plugin(tauri_plugin_updater::Builder::new().build());
-    }
-
-    builder
-        .setup(|_app| {
             // Console de debug (DevTools) ouverte automatiquement avec `pnpm tauri dev`.
             #[cfg(debug_assertions)]
             {
                 use tauri::Manager;
-                if let Some(window) = _app.get_webview_window("main") {
+                if let Some(window) = app.get_webview_window("main") {
                     window.open_devtools();
                 }
             }
