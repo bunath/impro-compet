@@ -30,14 +30,41 @@ export function WelcomePage() {
     <div className="mx-auto flex h-full max-w-4xl flex-col justify-center gap-8 p-8">
       <header>
         <h1 className="font-display text-6xl uppercase tracking-widest">Bienvenue</h1>
-        <p className="text-muted">{user ? `Connecté : ${user.username}` : 'Choisis comment démarrer ton match.'}</p>
+        <p className="text-muted">
+          {user ? `Connecté : ${user.username}` : 'Choisis comment démarrer ton match.'}
+        </p>
       </header>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-        <Tile icon={<FilePlus2 />} title="Base vierge" hint="Tout configurer à la main." onClick={() => start()} />
-        <Tile icon={<Package />} title="Données de base" hint="Pack de ressources déjà téléchargé." onClick={() => start(configFromPack(useLibraryStore.getState().pack ?? BASE_PACK))} />
-        <Tile icon={<PackageSearch />} title="Autre pack" hint="Parcourir les packs du serveur." onClick={() => go('packs')} />
-        <Tile icon={<FolderOpen />} title="Importer un fichier" hint="Reprendre un export local (.json)." onClick={() => void importLocal()} />
-        <Tile icon={<LogIn />} title={user ? 'Changer de compte' : 'Se connecter'} hint="Presets et configs sur ton serveur." onClick={() => go('auth')} />
+        <Tile
+          icon={<FilePlus2 />}
+          title="Base vierge"
+          hint="Tout configurer à la main."
+          onClick={() => start()}
+        />
+        <Tile
+          icon={<Package />}
+          title="Données de base"
+          hint="Pack de ressources déjà téléchargé."
+          onClick={() => start(configFromPack(useLibraryStore.getState().pack ?? BASE_PACK))}
+        />
+        <Tile
+          icon={<PackageSearch />}
+          title="Autre pack"
+          hint="Parcourir les packs du serveur."
+          onClick={() => go('packs')}
+        />
+        <Tile
+          icon={<FolderOpen />}
+          title="Importer un fichier"
+          hint="Reprendre un export local (.json)."
+          onClick={() => void importLocal()}
+        />
+        <Tile
+          icon={<LogIn />}
+          title={user ? 'Changer de compte' : 'Se connecter'}
+          hint="Presets et configs sur ton serveur."
+          onClick={() => go('auth')}
+        />
       </div>
       {error && <p className="text-sm text-danger">{error}</p>}
       <ServerBanner />

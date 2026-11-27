@@ -8,13 +8,27 @@ export function HalftimePanel({ now }: { now: number }) {
   const h = m.live.halftime;
   const running = h.startedAt !== null;
   return (
-    <Card title={<span className="inline-flex items-center gap-1.5"><Coffee size={14} /> Mi-temps</span>}>
+    <Card
+      title={
+        <span className="inline-flex items-center gap-1.5">
+          <Coffee size={14} /> Mi-temps
+        </span>
+      }
+    >
       <div className="flex items-center gap-3">
-        <span className="font-display text-4xl tabular-nums">{formatClock(remainingMs(h, now))}</span>
-        <Button variant="primary" onClick={m.toggleHalftime} aria-label={running ? 'Pause mi-temps' : 'Lancer la mi-temps'}>
+        <span className="font-display text-4xl tabular-nums">
+          {formatClock(remainingMs(h, now))}
+        </span>
+        <Button
+          variant="primary"
+          onClick={m.toggleHalftime}
+          aria-label={running ? 'Pause mi-temps' : 'Lancer la mi-temps'}
+        >
           {running ? <Pause size={18} /> : <Play size={18} />}
         </Button>
-        <Button onClick={m.stopHalftime} aria-label="Arrêter la mi-temps"><Square size={16} /></Button>
+        <Button onClick={m.stopHalftime} aria-label="Arrêter la mi-temps">
+          <Square size={16} />
+        </Button>
         <label className="ml-auto flex items-center gap-1 text-xs text-muted">
           min
           <input
