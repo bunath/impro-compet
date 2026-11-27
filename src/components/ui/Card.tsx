@@ -1,6 +1,11 @@
 import type { ReactNode } from 'react';
 
-export function Card({ title, action, children, className = '' }: {
+export function Card({
+  title,
+  action,
+  children,
+  className = '',
+}: {
   title?: ReactNode;
   action?: ReactNode;
   children: ReactNode;
