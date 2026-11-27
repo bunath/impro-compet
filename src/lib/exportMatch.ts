@@ -15,6 +15,8 @@ export function parseExport(text: string): MatchExport {
 export const exportFileName = (config: MatchConfig): string => {
   const [a, b] = config.teams;
   const slug = `${a.name}-vs-${b.name}`
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');

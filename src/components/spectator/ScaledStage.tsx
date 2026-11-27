@@ -11,11 +11,7 @@ export function ScaledStage({ children }: { children: ReactNode }) {
     <div ref={ref} className="relative h-full w-full overflow-hidden bg-black">
       <div
         className="absolute left-1/2 top-1/2 origin-center"
-        style={{
-          width: STAGE_W,
-          height: STAGE_H,
-          transform: `translate(-50%, -50%) scale(${scale})`,
-        }}
+        style={{ width: STAGE_W, height: STAGE_H, transform: `translate(-50%, -50%) scale(${scale})` }}
       >
         {children}
       </div>

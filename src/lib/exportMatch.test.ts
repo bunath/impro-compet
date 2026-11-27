@@ -25,8 +25,6 @@ describe('export', () => {
     expect(() => parseExport('{"foo":1}')).toThrow();
   });
   it('nom de fichier propre', () => {
-    expect(exportFileName(blankConfig())).toMatch(
-      /^match-equipe-a-vs-equipe-b-\d{4}-\d{2}-\d{2}\.json$/,
-    );
+    expect(exportFileName(blankConfig())).toMatch(/^match-equipe-a-vs-equipe-b-\d{4}-\d{2}-\d{2}\.json$/);
   });
 });

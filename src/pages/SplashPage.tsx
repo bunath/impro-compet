@@ -22,9 +22,7 @@ export function SplashPage() {
 
   return (
     <div className="relative grid h-full place-items-center overflow-hidden bg-[radial-gradient(ellipse_at_top,#161c33,#05060a_75%)]">
-      {BEAMS.map((b) => (
-        <SpotlightBeam key={b.x} {...b} />
-      ))}
+      {BEAMS.map((b) => <SpotlightBeam key={b.x} {...b} />)}
       <div className="relative z-10 flex flex-col items-center gap-24">
         <Puck />
         <motion.h1

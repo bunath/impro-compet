@@ -11,10 +11,7 @@ export function PacksPage() {
   const [progress, setProgress] = useState<{ id: string; ratio: number } | null>(null);
 
   useEffect(() => {
-    api
-      .listPacks()
-      .then(setPacks)
-      .catch((e) => setError(e instanceof Error ? e.message : String(e)));
+    api.listPacks().then(setPacks).catch((e) => setError(e instanceof Error ? e.message : String(e)));
   }, []);
 
   const pick = async (id: string) => {
@@ -39,38 +36,19 @@ export function PacksPage() {
           <Card key={p.id}>
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="font-semibold">
-                  {p.name} <span className="text-xs text-muted">v{p.version}</span>
-                </p>
+                <p className="font-semibold">{p.name} <span className="text-xs text-muted">v{p.version}</span></p>
                 <p className="text-sm text-muted">{p.description}</p>
               </div>
-              <Button
-                variant="primary"
-                disabled={progress !== null}
-                onClick={() => void pick(p.id)}
-              >
-                Choisir
-              </Button>
+              <Button variant="primary" disabled={progress !== null} onClick={() => void pick(p.id)}>Choisir</Button>
             </div>
-            {progress?.id === p.id && (
-              <div className="mt-3">
-                <ProgressBar value={progress.ratio} />
-              </div>
-            )}
+            {progress?.id === p.id && <div className="mt-3"><ProgressBar value={progress.ratio} /></div>}
           </Card>
         ))}
       </div>
       <div className="flex gap-2">
-        <Button variant="ghost" onClick={() => useAppStore.getState().go('welcome')}>
-          ← Retour
-        </Button>
+        <Button variant="ghost" onClick={() => useAppStore.getState().go('welcome')}>← Retour</Button>
         {error && (
-          <Button
-            onClick={() => {
-              useLibraryStore.getState().setConfig(configFromPack(BASE_PACK));
-              useAppStore.getState().go('setup');
-            }}
-          >
+          <Button onClick={() => { useLibraryStore.getState().setConfig(configFromPack(BASE_PACK)); useAppStore.getState().go('setup'); }}>
             Utiliser le pack intégré
           </Button>
         )}

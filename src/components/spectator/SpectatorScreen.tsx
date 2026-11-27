@@ -7,9 +7,7 @@ function TeamBlock({ team, surprise }: { team: LiveTeam; surprise: boolean }) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-6">
       <div className="h-3 w-56 rounded-full" style={{ background: team.color }} />
-      <h2 className="max-w-[760px] truncate font-display text-[110px] uppercase leading-none tracking-wide">
-        {team.name}
-      </h2>
+      <h2 className="max-w-[760px] truncate font-display text-[110px] uppercase leading-none tracking-wide">{team.name}</h2>
       <AnimatePresence mode="popLayout">
         <motion.div
           key={displayScore(team.score, surprise)}
@@ -24,14 +22,9 @@ function TeamBlock({ team, surprise }: { team: LiveTeam; surprise: boolean }) {
       </AnimatePresence>
       <div className="flex gap-4" aria-label={`${team.fouls} fautes`}>
         {[0, 1, 2].map((k) => (
-          <span
-            key={k}
-            className={`h-9 w-9 rounded-full border-4 ${team.fouls % 3 > k || (team.fouls > 0 && team.fouls % 3 === 0) ? 'border-red-500 bg-red-500' : 'border-white/30'}`}
-          />
+          <span key={k} className={`h-9 w-9 rounded-full border-4 ${team.fouls % 3 > k || (team.fouls > 0 && team.fouls % 3 === 0) ? 'border-red-500 bg-red-500' : 'border-white/30'}`} />
         ))}
-        <span className="ml-2 font-display text-5xl text-white/70">
-          {team.fouls} faute{team.fouls > 1 ? 's' : ''}
-        </span>
+        <span className="ml-2 font-display text-5xl text-white/70">{team.fouls} faute{team.fouls > 1 ? 's' : ''}</span>
       </div>
     </div>
   );
@@ -52,9 +45,7 @@ export function SpectatorScreen({ live, now }: { live: LiveState; now: number })
           </div>
         )}
         {live.timerEnabled && (
-          <div className="font-display text-[130px] tabular-nums leading-none">
-            {formatClock(remainingMs(live.timer, now))}
-          </div>
+          <div className="font-display text-[130px] tabular-nums leading-none">{formatClock(remainingMs(live.timer, now))}</div>
         )}
       </div>
 
@@ -66,29 +57,15 @@ export function SpectatorScreen({ live, now }: { live: LiveState; now: number })
 
       <AnimatePresence>
         {showHalftime && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-10 grid place-items-center bg-black/85"
-          >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-10 grid place-items-center bg-black/85">
             <div className="text-center">
-              <p className="font-display text-[110px] uppercase tracking-widest text-accent">
-                Mi-temps
-              </p>
-              <p className="font-display text-[420px] leading-none tabular-nums">
-                {formatClock(remainingMs(live.halftime, now))}
-              </p>
+              <p className="font-display text-[110px] uppercase tracking-widest text-accent">Mi-temps</p>
+              <p className="font-display text-[420px] leading-none tabular-nums">{formatClock(remainingMs(live.halftime, now))}</p>
             </div>
           </motion.div>
         )}
         {message && (
-          <motion.div
-            initial={{ y: 200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 200, opacity: 0 }}
-            className="absolute inset-x-0 bottom-0 z-20 bg-accent px-24 py-14 text-center font-display text-[110px] uppercase leading-tight text-accent-ink"
-          >
+          <motion.div initial={{ y: 200, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 200, opacity: 0 }} className="absolute inset-x-0 bottom-0 z-20 bg-accent px-24 py-14 text-center font-display text-[110px] uppercase leading-tight text-accent-ink">
             {message.text}
           </motion.div>
         )}

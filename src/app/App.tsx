@@ -33,14 +33,7 @@ export function App() {
   return (
     <>
       <AnimatePresence mode="wait">
-        <motion.div
-          key={screen}
-          className="h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
-        >
+        <motion.div key={screen} className="h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
           <Page />
         </motion.div>
       </AnimatePresence>
@@ -50,6 +43,5 @@ export function App() {
 }
 
 /** La fenêtre spectateur est la même app, ouverte avec ?view=spectator. */
-export const isSpectatorWindow = () =>
-  new URLSearchParams(window.location.search).get('view') === 'spectator';
+export const isSpectatorWindow = () => new URLSearchParams(window.location.search).get('view') === 'spectator';
 export { SpectatorPage };
