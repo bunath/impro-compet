@@ -35,15 +35,30 @@ export function WelcomePage() {
         </p>
       </header>
       <div className="grid grid-cols-2 gap-2.5">
-        <Tile icon={<FilePlus2 />} title="Base vierge" hint="Tout configurer à la main" onClick={() => start()} />
+        <Tile
+          icon={<FilePlus2 />}
+          title="Base vierge"
+          hint="Tout configurer à la main"
+          onClick={() => start()}
+        />
         <Tile
           icon={<Package />}
           title="Données de base"
           hint="Pack de ressources téléchargé"
           onClick={() => start(configFromPack(useLibraryStore.getState().pack ?? BASE_PACK))}
         />
-        <Tile icon={<PackageSearch />} title="Autre pack" hint="Parcourir les packs du serveur" onClick={() => go('packs')} />
-        <Tile icon={<FolderOpen />} title="Importer un fichier" hint="Reprendre un export (.json)" onClick={() => void importLocal()} />
+        <Tile
+          icon={<PackageSearch />}
+          title="Autre pack"
+          hint="Parcourir les packs du serveur"
+          onClick={() => go('packs')}
+        />
+        <Tile
+          icon={<FolderOpen />}
+          title="Importer un fichier"
+          hint="Reprendre un export (.json)"
+          onClick={() => void importLocal()}
+        />
         <Tile
           icon={<LogIn />}
           title={user ? 'Changer de compte' : 'Se connecter'}

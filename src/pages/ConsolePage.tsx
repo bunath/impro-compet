@@ -44,13 +44,21 @@ export function ConsolePage() {
         />
         <div className="ml-auto flex items-center gap-2">
           <ServerBanner />
-          <Button size="sm" icon={<ExternalLink size={13} />} onClick={() => void openSpectatorWindow()}>
+          <Button
+            size="sm"
+            icon={<ExternalLink size={13} />}
+            onClick={() => void openSpectatorWindow()}
+          >
             Écran spectateur
           </Button>
           <Button size="sm" icon={<Download size={13} />} onClick={exportMatch}>
             Exporter
           </Button>
-          <Button size="sm" icon={<Settings2 size={13} />} onClick={() => useAppStore.getState().go('setup')}>
+          <Button
+            size="sm"
+            icon={<Settings2 size={13} />}
+            onClick={() => useAppStore.getState().go('setup')}
+          >
             Préparation
           </Button>
         </div>

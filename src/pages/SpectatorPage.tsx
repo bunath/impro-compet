@@ -19,7 +19,9 @@ export function SpectatorPage() {
         {live ? (
           <SpectatorScreen live={live} now={now} />
         ) : (
-          <div className="grid h-full place-items-center text-4xl font-semibold uppercase tracking-[0.3em] text-white/30">En attente de la régie…</div>
+          <div className="grid h-full place-items-center text-4xl font-semibold uppercase tracking-[0.3em] text-white/30">
+            En attente de la régie…
+          </div>
         )}
       </ScaledStage>
     </div>

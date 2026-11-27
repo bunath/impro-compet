@@ -7,7 +7,10 @@ function TeamColumn({ index }: { index: TeamIndex }) {
   const m = useMatchStore();
   return (
     <div className="relative flex flex-1 flex-col items-center justify-center gap-3 rounded-lg border border-line bg-panel-2 p-4">
-      <span className="absolute inset-x-0 top-0 h-0.5 rounded-t-lg" style={{ background: team.color }} />
+      <span
+        className="absolute inset-x-0 top-0 h-0.5 rounded-t-lg"
+        style={{ background: team.color }}
+      />
       <input
         value={team.name}
         onChange={(e) => m.setTeamName(index, e.target.value)}
@@ -22,7 +25,9 @@ function TeamColumn({ index }: { index: TeamIndex }) {
         onInc={() => m.addPoint(index, 1)}
         onDec={() => m.addPoint(index, -1)}
       />
-      <div className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-muted">Fautes</div>
+      <div className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-muted">
+        Fautes
+      </div>
       <Stepper
         label="Faute"
         value={team.fouls}
@@ -35,7 +40,10 @@ function TeamColumn({ index }: { index: TeamIndex }) {
 
 export function TeamsPanel() {
   return (
-    <Card title="Équipes · 3 fautes = +1 point à l’adversaire" className="flex min-h-0 flex-1 flex-col">
+    <Card
+      title="Équipes · 3 fautes = +1 point à l’adversaire"
+      className="flex min-h-0 flex-1 flex-col"
+    >
       <div className="flex min-h-0 flex-1 gap-3">
         <TeamColumn index={0} />
         <TeamColumn index={1} />

@@ -11,7 +11,9 @@ export function TimeControls({ presets, now }: { presets: TimePreset[]; now: num
   return (
     <Card title="Temps" action={<Toggle checked={timerEnabled} onChange={m.toggleTimerEnabled} />}>
       <div className={`space-y-2.5 ${timerEnabled ? '' : 'pointer-events-none opacity-40'}`}>
-        <div className="text-center font-display text-5xl">{formatClock(remainingMs(timer, now))}</div>
+        <div className="text-center font-display text-5xl">
+          {formatClock(remainingMs(timer, now))}
+        </div>
         <Button
           variant="primary"
           size="lg"
