@@ -1,0 +1,6 @@
+[Unit]
+Description=Impro Régie — ouvrir le Funnel (22h)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tailscale funnel --bg 8787

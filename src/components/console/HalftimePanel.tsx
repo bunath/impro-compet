@@ -11,25 +11,23 @@ export function HalftimePanel({ now }: { now: number }) {
     <Card
       title={
         <span className="inline-flex items-center gap-1.5">
-          <Coffee size={14} /> Mi-temps
+          <Coffee size={12} /> Mi-temps
         </span>
       }
     >
-      <div className="flex items-center gap-3">
-        <span className="font-display text-4xl tabular-nums">
-          {formatClock(remainingMs(h, now))}
-        </span>
+      <div className="flex items-center gap-2">
+        <span className="font-display text-3xl">{formatClock(remainingMs(h, now))}</span>
         <Button
           variant="primary"
           onClick={m.toggleHalftime}
           aria-label={running ? 'Pause mi-temps' : 'Lancer la mi-temps'}
         >
-          {running ? <Pause size={18} /> : <Play size={18} />}
+          {running ? <Pause size={14} /> : <Play size={14} />}
         </Button>
         <Button onClick={m.stopHalftime} aria-label="Arrêter la mi-temps">
-          <Square size={16} />
+          <Square size={13} />
         </Button>
-        <label className="ml-auto flex items-center gap-1 text-xs text-muted">
+        <label className="ml-auto flex items-center gap-1 text-[11px] text-muted">
           min
           <input
             type="number"
@@ -38,7 +36,7 @@ export function HalftimePanel({ now }: { now: number }) {
             value={Math.round(h.durationMs / 60000)}
             disabled={h.active}
             onChange={(e) => m.setHalftimeDuration(Math.max(1, Number(e.target.value)) * 60)}
-            className="h-9 w-14 rounded-lg border border-line bg-panel-2 px-2 text-center text-ink outline-none focus:border-accent"
+            className="h-8 w-12 rounded-md border border-line bg-panel-2 px-1 text-center text-ink outline-none focus:border-accent"
           />
         </label>
       </div>

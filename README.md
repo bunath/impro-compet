@@ -14,11 +14,11 @@ pnpm tauri icon src-tauri/icons/app-icon.png   # génère le jeu d'icônes compl
 pnpm tauri dev       # ouvre l'app + la console DevTools ; les logs JS et Rust s'affichent aussi dans le terminal
 ```
 
-| Commande                                            | Rôle                                    |
-| --------------------------------------------------- | --------------------------------------- |
-| `pnpm tauri dev`                                    | Dev (DevTools ouvertes automatiquement) |
-| `pnpm tauri build`                                  | Installeurs                             |
-| `pnpm lint` / `typecheck` / `test` / `format:check` | Vérifs CI                               |
+| Commande | Rôle |
+|---|---|
+| `pnpm tauri dev` | Dev (DevTools ouvertes automatiquement) |
+| `pnpm tauri build` | Installeurs |
+| `pnpm lint` / `typecheck` / `test` / `format:check` | Vérifs CI |
 
 ## Configuration
 
@@ -27,4 +27,4 @@ pnpm tauri dev       # ouvre l'app + la console DevTools ; les logs JS et Rust s
   (+ `OWNER/REPO` dans l'endpoint), clé privée dans les secrets GitHub `TAURI_SIGNING_PRIVATE_KEY(_PASSWORD)`.
   Publier = pousser un tag `vX.Y.Z`.
 
-Voir `docs/architecture.md` et `docs/server-api.md`.
+Voir `docs/architecture.md`, `docs/server-api.md` et **`docs/server-setup.md`** (serveur, Tailscale Funnel, Brevo).

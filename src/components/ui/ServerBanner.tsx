@@ -6,11 +6,11 @@ export function ServerBanner() {
   const { open, pending } = useServerStatus();
   if (open && !pending) return null;
   return (
-    <div className="flex items-center gap-2 rounded-xl border border-line bg-panel-2 px-3 py-2 text-xs text-muted">
+    <div className="flex items-center gap-2 rounded-md border border-line bg-panel px-3 py-2 text-xs text-muted">
       {open ? (
-        <CloudUpload size={14} className="text-ok" />
+        <CloudUpload size={14} className="shrink-0 text-ok" />
       ) : (
-        <CloudOff size={14} className="text-accent" />
+        <CloudOff size={14} className="shrink-0 text-accent" />
       )}
       {open
         ? `${pending} élément(s) en cours de synchronisation…`

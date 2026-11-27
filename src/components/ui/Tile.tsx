@@ -14,13 +14,15 @@ export function Tile({
   return (
     <button
       onClick={onClick}
-      className="group flex flex-col items-start gap-3 rounded-2xl border border-line bg-panel p-5 text-left transition hover:-translate-y-1 hover:border-accent hover:bg-panel-2 active:scale-95"
+      className="group flex items-start gap-3 rounded-lg border border-line bg-panel p-3 text-left transition hover:border-accent/60 hover:bg-panel-2 active:scale-[0.98]"
     >
-      <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent/15 text-accent transition group-hover:bg-accent group-hover:text-accent-ink">
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-panel-2 text-muted transition group-hover:bg-accent/15 group-hover:text-accent [&>svg]:h-4 [&>svg]:w-4">
         {icon}
       </span>
-      <span className="font-semibold">{title}</span>
-      <span className="text-sm text-muted">{hint}</span>
+      <span>
+        <span className="block text-[13px] font-semibold">{title}</span>
+        <span className="block text-xs text-muted">{hint}</span>
+      </span>
     </button>
   );
 }

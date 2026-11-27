@@ -1,0 +1,1 @@
+{"name":"impro-regie-server","private":true,"type":"module","scripts":{"start":"node index.mjs"},"engines":{"node":">=22.13"}}

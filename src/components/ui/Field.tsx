@@ -8,11 +8,11 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> 
 export function Field({ label, onChange, className = '', ...rest }: Props) {
   return (
     <label className="block">
-      {label && <span className="mb-1 block text-xs font-medium text-muted">{label}</span>}
+      {label && <span className="mb-1 block text-[11px] font-medium text-muted">{label}</span>}
       <input
         {...rest}
         onChange={(e) => onChange(e.target.value)}
-        className={`h-10 w-full rounded-xl border border-line bg-panel-2 px-3 text-sm outline-none transition focus:border-accent ${className}`}
+        className={`h-8 w-full rounded-md border border-line bg-panel-2 px-2.5 text-[13px] outline-none transition placeholder:text-muted/60 focus:border-accent ${className}`}
       />
     </label>
   );

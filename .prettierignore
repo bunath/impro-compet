@@ -3,3 +3,5 @@ src-tauri/target
 src-tauri/gen
 src-tauri/icons
 pnpm-lock.yaml
+server/data
+server/deploy

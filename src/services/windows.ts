@@ -21,9 +21,7 @@ export async function openSpectatorWindow(): Promise<void> {
     height: 720,
     backgroundColor: '#05060a',
   });
-  void win.once('tauri://error', (e) =>
-    logger.error('window', 'ouverture spectateur échouée', e.payload),
-  );
+  void win.once('tauri://error', (e) => logger.error('window', 'ouverture spectateur échouée', e.payload));
 }
 
 export async function toggleFullscreen(): Promise<void> {

@@ -12,10 +12,10 @@ export function Card({
   className?: string;
 }) {
   return (
-    <section className={`rounded-2xl border border-line bg-panel p-4 ${className}`}>
+    <section className={`rounded-lg border border-line bg-panel p-3 ${className}`}>
       {(title || action) && (
-        <header className="mb-3 flex items-center justify-between">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted">{title}</h2>
+        <header className="mb-2.5 flex items-center justify-between">
+          <h2 className="text-[11px] font-semibold uppercase tracking-wider text-muted">{title}</h2>
           {action}
         </header>
       )}

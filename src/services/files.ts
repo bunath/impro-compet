@@ -20,10 +20,7 @@ export async function saveJsonFile(defaultName: string, content: string): Promis
 export async function openJsonFile(): Promise<string | null> {
   if (!isTauri()) {
     return new Promise((resolve) => {
-      const input = Object.assign(document.createElement('input'), {
-        type: 'file',
-        accept: '.json',
-      });
+      const input = Object.assign(document.createElement('input'), { type: 'file', accept: '.json' });
       input.onchange = async () => resolve((await input.files?.[0]?.text()) ?? null);
       input.click();
     });

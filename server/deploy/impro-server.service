@@ -1,0 +1,20 @@
+[Unit]
+Description=Impro Régie — serveur
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=impro
+WorkingDirectory=/opt/impro-regie/server
+EnvironmentFile=/etc/impro-regie.env
+ExecStart=/usr/bin/node index.mjs
+Restart=on-failure
+# durcissement
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/impro-regie
+
+[Install]
+WantedBy=multi-user.target

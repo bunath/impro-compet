@@ -1,0 +1,6 @@
+[Unit]
+Description=Impro Régie — fermer le Funnel (7h)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tailscale funnel reset

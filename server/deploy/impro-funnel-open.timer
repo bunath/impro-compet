@@ -1,0 +1,9 @@
+[Unit]
+Description=Ouvre le Funnel à 22h (Paris)
+
+[Timer]
+OnCalendar=*-*-* 22:00:00 Europe/Paris
+Persistent=true
+
+[Install]
+WantedBy=timers.target
