@@ -16,14 +16,11 @@ export function DownloadPage() {
     (async () => {
       let message: string | null = null;
       try {
-        useLibraryStore
-          .getState()
-          .setPack(await downloadPack('base', (r) => alive && setProgress(r)));
+        useLibraryStore.getState().setPack(await downloadPack('base', (r) => alive && setProgress(r)));
       } catch (e) {
         logger.warn('first-run', 'pack serveur indisponible, pack embarqué utilisé', String(e));
         useLibraryStore.getState().setPack(BASE_PACK);
-        message =
-          'Serveur indisponible : pack intégré installé. Mise à jour automatique plus tard.';
+        message = 'Serveur indisponible : pack intégré installé. Mise à jour automatique plus tard.';
         setProgress(1);
       }
       if (!alive) return;

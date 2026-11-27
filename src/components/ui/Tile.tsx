@@ -1,16 +1,6 @@
 import type { ReactNode } from 'react';
 
-export function Tile({
-  icon,
-  title,
-  hint,
-  onClick,
-}: {
-  icon: ReactNode;
-  title: string;
-  hint: string;
-  onClick: () => void;
-}) {
+export function Tile({ icon, title, hint, onClick }: { icon: ReactNode; title: string; hint: string; onClick: () => void }) {
   return (
     <button
       onClick={onClick}

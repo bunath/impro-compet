@@ -10,12 +10,7 @@ export function Puck() {
       style={{ perspective: 900 }}
       initial={{ y: -520, scale: 1.3, opacity: 0 }}
       animate={{ y: [-520, 0, -70, 0, -18, 0], scale: [1.3, 1, 1, 1, 1, 1], opacity: 1 }}
-      transition={{
-        duration: 1.9,
-        delay: 0.5,
-        times: [0, 0.45, 0.62, 0.78, 0.9, 1],
-        ease: 'easeIn',
-      }}
+      transition={{ duration: 1.9, delay: 0.5, times: [0, 0.45, 0.62, 0.78, 0.9, 1], ease: 'easeIn' }}
     >
       <motion.div
         className="relative h-full w-full"
@@ -32,9 +27,7 @@ export function Puck() {
               className="absolute inset-0 rounded-full"
               style={{
                 transform: `translateZ(${i * 3}px)`,
-                background: top
-                  ? 'radial-gradient(circle at 35% 30%, #3a4260, #151a2b 70%)'
-                  : '#0a0c14',
+                background: top ? 'radial-gradient(circle at 35% 30%, #3a4260, #151a2b 70%)' : '#0a0c14',
                 border: top ? '3px solid #ffb020' : 'none',
                 boxShadow: top ? 'inset 0 0 24px #000a, 0 0 30px #ffb02055' : 'none',
               }}

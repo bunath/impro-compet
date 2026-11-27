@@ -2,13 +2,7 @@ import { Card, Button } from '@/components/ui';
 import type { Category } from '@/lib/types';
 import { useMatchStore } from '@/store/matchStore';
 
-export function CategoryList({
-  categories,
-  allowNone,
-}: {
-  categories: Category[];
-  allowNone: boolean;
-}) {
+export function CategoryList({ categories, allowNone }: { categories: Category[]; allowNone: boolean }) {
   const current = useMatchStore((s) => s.live.category);
   const select = useMatchStore((s) => s.selectCategory);
   return (
@@ -20,12 +14,7 @@ export function CategoryList({
           </Button>
         )}
         {categories.map((c) => (
-          <Button
-            key={c.id}
-            active={current === c.name}
-            onClick={() => select(c.name)}
-            className="justify-start"
-          >
+          <Button key={c.id} active={current === c.name} onClick={() => select(c.name)} className="justify-start">
             {c.name}
           </Button>
         ))}
