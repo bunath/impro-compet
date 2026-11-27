@@ -1,0 +1,25 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Permissions de la régie et de la vue spectateur",
+  "windows": ["main", "spectator"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-create",
+    "core:webview:allow-create-webview-window",
+    "core:window:allow-set-fullscreen",
+    "core:window:allow-is-fullscreen",
+    "core:window:allow-set-focus",
+    "core:window:allow-set-title",
+    "log:default",
+    "dialog:default",
+    "fs:allow-read-text-file",
+    "fs:allow-write-text-file",
+    "process:allow-restart",
+    "updater:default",
+    {
+      "identifier": "http:default",
+      "allow": [{ "url": "https://*.ts.net" }, { "url": "https://*.ts.net/*" }]
+    }
+  ]
+}
