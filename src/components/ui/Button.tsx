@@ -22,7 +22,15 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode;
 }
 
-export function Button({ variant = 'subtle', size = 'md', active, icon, className = '', children, ...rest }: Props) {
+export function Button({
+  variant = 'subtle',
+  size = 'md',
+  active,
+  icon,
+  className = '',
+  children,
+  ...rest
+}: Props) {
   return (
     <button
       {...rest}

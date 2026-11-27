@@ -26,7 +26,10 @@ export function ConsolePage() {
   useEffect(() => useMatchStore.getState().stopClocksIfElapsed(now), [now]);
 
   const exportMatch = () =>
-    void saveJsonFile(exportFileName(config), JSON.stringify(buildExport(config, useMatchStore.getState().live), null, 2));
+    void saveJsonFile(
+      exportFileName(config),
+      JSON.stringify(buildExport(config, useMatchStore.getState().live), null, 2),
+    );
 
   return (
     <div className="grid h-full grid-cols-[20rem_1fr] grid-rows-[auto_1fr] gap-3 p-3">
@@ -42,11 +45,23 @@ export function ConsolePage() {
         <TeamsPanel />
         <MessagePanel presets={config.messagePresets} />
         <div className="flex items-center gap-2">
-          <Button variant={surprise ? 'primary' : 'subtle'} icon={surprise ? <EyeOff size={16} /> : <Eye size={16} />} onClick={useMatchStore.getState().toggleSurprise}>
+          <Button
+            variant={surprise ? 'primary' : 'subtle'}
+            icon={surprise ? <EyeOff size={16} /> : <Eye size={16} />}
+            onClick={useMatchStore.getState().toggleSurprise}
+          >
             Mode surprise {surprise ? 'ON — points masqués (?)' : 'OFF'}
           </Button>
-          <Button className="ml-auto" icon={<Download size={16} />} onClick={exportMatch}>Exporter</Button>
-          <Button variant="ghost" icon={<LogOut size={16} />} onClick={() => useAppStore.getState().go('setup')}>Préparation</Button>
+          <Button className="ml-auto" icon={<Download size={16} />} onClick={exportMatch}>
+            Exporter
+          </Button>
+          <Button
+            variant="ghost"
+            icon={<LogOut size={16} />}
+            onClick={() => useAppStore.getState().go('setup')}
+          >
+            Préparation
+          </Button>
         </div>
       </div>
     </div>
