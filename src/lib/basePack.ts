@@ -27,7 +27,11 @@ export const BASE_PACK: ResourcePack = {
     ['Vote du public', 8],
     ['Pause technique', 10],
     ['Changement de joueurs', 8],
-  ].map(([text, seconds]) => ({ id: `base-m${seconds}-${text}`, text: String(text), seconds: Number(seconds) })),
+  ].map(([text, seconds]) => ({
+    id: `base-m${seconds}-${text}`,
+    text: String(text),
+    seconds: Number(seconds),
+  })),
 };
 
 export function blankConfig(): MatchConfig {

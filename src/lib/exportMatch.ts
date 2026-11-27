@@ -14,6 +14,9 @@ export function parseExport(text: string): MatchExport {
 
 export const exportFileName = (config: MatchConfig): string => {
   const [a, b] = config.teams;
-  const slug = `${a.name}-vs-${b.name}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const slug = `${a.name}-vs-${b.name}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
   return `match-${slug || 'impro'}-${new Date().toISOString().slice(0, 10)}.json`;
 };
